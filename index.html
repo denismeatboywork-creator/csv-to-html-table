@@ -2,80 +2,61 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>База Геропротекторов</title>
-    <meta name="author" content="GeroDB Creator">
-    <meta content="Локальная база данных геропротекторных экстрактов">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>GeroDB — База Геропротекторов</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-    
-    <style>
-        body { background-color: #f8f9fa; padding-top: 20px; }
-        .container-fluid { max-width: 1200px; }
-        h1 { color: #2c3e50; margin-bottom: 30px; text-align: center; font-weight: bold; }
-        .table-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    </style>
 </head>
+<body class="bg-light">
 
-<body>
-    <div class="container-fluid">
-        <main class="row">
-            <div class="col">
-                <h1>🧬 База геропротекторных экстрактов</h1>
+    <div class="container-fluid py-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mb-5">🧬 База геропротекторных экстрактов</h1>
                 
-                <div class="table-container">
-                    <div id="table-container"></div>
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div id="table-container" class="table-responsive"></div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4 text-muted">
+                    <small>Данные загружены из локальной базы: <strong>data/bsvv.csv</strong></small>
                 </div>
             </div>
-        </main>
-        
-        <footer class="row mt-5">
-            <div class="col text-center text-muted">
-                <hr>
-                <p>Данные загружены из локального файла <strong>bsvv.csv</strong></p>
-            </div>
-        </footer>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+    
     <script src="js/jquery.csv.min.js"></script>
+    
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    
     <script src="js/csv_to_html_table.js"></script>
 
     <script>
-        // Функция для превращения текста ссылки в кликабельную ссылку
-        function format_link(link) {
-            if (link && link.startsWith('http'))
-                return "<a href='" + link + "' target='_blank' class='btn btn-sm btn-outline-primary'>Открыть PubMed</a>";
-            else return link;
-        }
-
-        // Инициализация таблицы
+        // Запуск процесса создания таблицы
         CsvToHtmlTable.init({
-            csv_path: "data/bsvv.csv", // Путь к твоему файлу
-            element: "#table-container", // ОБЯЗАТЕЛЬНО с решеткой #
+            csv_path: "data/bsvv.csv",
+            element: "#table-container", 
             allow_download: true,
             csv_options: {
-                separator: ",", // Если таблица не появится, попробуй заменить на ";"
+                separator: ",", // ЕСЛИ ТАБЛИЦА НЕ ПОЯВИТСЯ — ЗАМЕНИ ЗАПЯТУЮ НА ТОЧКУ С ЗАПЯТОЙ ";"
                 delimiter: '"'
             },
             datatables_options: {
-                "paging": true,
-                "pageLength": 20,
+                "paging": false,
                 "language": {
-                    "search": "Поиск по базе:",
-                    "lengthMenu": "Показать _MENU_ записей",
-                    "info": "Показано с _START_ по _END_ из _TOTAL_ экстрактов"
+                    "search": "Поиск:",
+                    "zeroRecords": "Ничего не найдено"
                 }
-            },
-            custom_formatting: [
-                [6, format_link] // Форматируем 7-й столбец (индекс 6), если там ссылка
-            ]
+            }
         });
     </script>
+
 </body>
 </html>
