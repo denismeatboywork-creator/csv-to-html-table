@@ -1,46 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CSV to HTML Table</title>
-    <meta name="author" content="Derek Eder">
-    <meta content="Display any CSV file as a searchable, filterable, pretty HTML table">
+    <title>База Геропротекторов</title>
+    <meta name="author" content="GeroDB Creator">
+    <meta content="Локальная база данных геропротекторных экстрактов">
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    
+    <style>
+        body { background-color: #f8f9fa; padding-top: 20px; }
+        .container-fluid { max-width: 1200px; }
+        h1 { color: #2c3e50; margin-bottom: 30px; text-align: center; font-weight: bold; }
+        .table-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    </style>
 </head>
 
 <body>
     <div class="container-fluid">
         <main class="row">
             <div class="col">
-                <h1>CSV to HTML Table</h1>
-
-                <p>Display any CSV file as a searchable, filterable, pretty HTML table. Done in 100% JavaScript. <a
-                        href="https://github.com/derekeder/csv-to-html-table">Code
-                        on GitHub</a>.</p>
-
-                <p> Here's a table of Health Clinics from the <a href="https://data.cityofchicago.org/browse?q=health%20clinic&sortBy=relevance&utf8=%E2%9C%93">City
-                        of Chicago Data Portal</a>.
-                </p>
-
-                <div id="table-container"></div>
+                <h1>🧬 База геропротекторных экстрактов</h1>
+                
+                <div class="table-container">
+                    <div id="table-container"></div>
+                </div>
             </div>
         </main>
-        <footer class="row">
-            <div class="col">
+        
+        <footer class="row mt-5">
+            <div class="col text-center text-muted">
                 <hr>
-                <p class="text-right"><a href="https://github.com/derekeder/csv-to-html-table">CSV to HTML Table</a> by
-                    <a href="http://derekeder.com">Derek
-                        Eder</a></p>
+                <p>Данные загружены из локального файла <strong>bsvv.csv</strong></p>
             </div>
         </footer>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery.csv.min.js"></script>
@@ -49,28 +47,35 @@
     <script src="js/csv_to_html_table.js"></script>
 
     <script>
+        // Функция для превращения текста ссылки в кликабельную ссылку
         function format_link(link) {
-            if (link)
-                return "<a href='" + link + "' target='_blank'>" + link + "</a>";
-            else return "";
+            if (link && link.startsWith('http'))
+                return "<a href='" + link + "' target='_blank' class='btn btn-sm btn-outline-primary'>Открыть PubMed</a>";
+            else return link;
         }
 
+        // Инициализация таблицы
         CsvToHtmlTable.init({
-            "data/bsvv.csv",
-            element: "table-container",
+            csv_path: "data/bsvv.csv", // Путь к твоему файлу
+            element: "#table-container", // ОБЯЗАТЕЛЬНО с решеткой #
             allow_download: true,
             csv_options: {
-                separator: ",",
+                separator: ",", // Если таблица не появится, попробуй заменить на ";"
                 delimiter: '"'
             },
             datatables_options: {
-                paging: false
+                "paging": true,
+                "pageLength": 20,
+                "language": {
+                    "search": "Поиск по базе:",
+                    "lengthMenu": "Показать _MENU_ записей",
+                    "info": "Показано с _START_ по _END_ из _TOTAL_ экстрактов"
+                }
             },
             custom_formatting: [
-                [4, format_link]
+                [6, format_link] // Форматируем 7-й столбец (индекс 6), если там ссылка
             ]
         });
     </script>
 </body>
-
 </html>
