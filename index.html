@@ -1,110 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>GeroLab — Geroprotector Database</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     
     <style>
-      body { background-color: #f4f7f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-      .navbar { background-color: #2c3e50; margin-bottom: 30px; }
-      .navbar-brand, .nav-link { color: #fff !important; }
-      .nav-tabs .nav-link { color: #2c3e50; font-weight: bold; }
-      .nav-tabs .nav-link.active { background-color: #fff; border-bottom-color: transparent; }
-      h1 { margin: 30px 0; font-weight: bold; color: #2c3e50; text-align: center; }
-      .container-fluid { max-width: 1300px; }
-      .tab-content { background: #fff; padding: 30px; border: 1px solid #dee2e6; border-top: none; border-radius: 0 0 8px 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-      .about-section { line-height: 1.8; color: #34495e; }
-      .btn-primary { background-color: #3498db; border: none; }
-      footer { margin-top: 50px; padding: 20px 0; color: #7f8c8d; border-top: 1px solid #dee2e6; }
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        .header-bg { background: #2c3e50; color: white; padding: 40px 0; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .nav-pills .nav-link.active { background-color: #3498db; }
+        .nav-pills .nav-link { color: #2c3e50; font-weight: 600; margin-right: 10px; }
+        .tab-content { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); min-height: 400px; }
+        .about-card { border-left: 5px solid #3498db; padding-left: 20px; }
+        footer { margin-top: 50px; padding: 20px; color: #7f8c8d; font-size: 0.85rem; }
+        .btn-pubmed { background-color: #3498db; border: none; color: white !important; }
     </style>
-  </head>
+</head>
+<body>
 
-  <body>
+<div class="header-bg">
+    <div class="container text-center">
+        <h1 class="display-4">🧬 Geroprotector Database</h1>
+        <p class="lead">Systematic Review of Longevity Extracts</p>
+    </div>
+</div>
 
-    <nav class="navbar navbar-expand-lg shadow-sm">
-      <div class="container">
-        <a class="navbar-brand" href="#">🔬 GeroLab Project</a>
-      </div>
-    </nav>
-
-    <div class="container-fluid">
-      <h1>Geroprotective Extracts Database</h1>
-
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
+<div class="container">
+    <ul class="nav nav-pills mb-4 justify-content-center" id="pills-tab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="database-tab" data-toggle="tab" href="#database" role="tab">Database</a>
+            <a class="nav-link active" id="pills-db-tab" data-toggle="pill" href="#pills-db" role="tab">Database</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="about-tab" data-toggle="tab" href="#about" role="tab">About Laboratory</a>
+            <a class="nav-link" id="pills-about-tab" data-toggle="pill" href="#pills-about" role="tab">About Laboratory</a>
         </li>
-      </ul>
+    </ul>
 
-      <div class="tab-content" id="myTabContent">
+    <div class="tab-content" id="pills-tabContent">
         
-        <div class="tab-pane fade show active" id="database" role="tabpanel">
-          <div id="table-container" class="table-responsive"></div>
+        <div class="tab-pane fade show active" id="pills-db" role="tabpanel">
+            <div id="table-container" class="table-responsive"></div>
         </div>
 
-        <div class="tab-pane fade" id="about" role="tabpanel">
-          <div class="about-section">
-            <h3>Scientific Laboratory of Biogerontology</h3>
-            <hr>
-            <p>This database has been developed as part of the <strong>State Assignment (Госзадание)</strong> for the current research period.</p>
-            <p>Our mission is to systematize data on natural extracts with potential geroprotective properties. We focus on molecular mechanisms such as:</p>
-            <ul>
-              <li>Senolytic activity (clearance of senescent cells)</li>
-              <li>Autophagy induction</li>
-              <li>Sirtuin activation and mTOR signaling modulation</li>
-            </ul>
-            <p>All data is synchronized with <strong>PubMed</strong> and verified by our research team. This digital tool is intended for internal laboratory use and expert analysis.</p>
-            <div class="alert alert-info mt-4">
-              <strong>Note:</strong> This is an open-access resource for scientific collaboration.
+        <div class="tab-pane fade" id="pills-about" role="tabpanel">
+            <div class="about-card">
+                <h2 class="mb-4">Scientific Information</h2>
+                <p class="lead">Разработано <strong>Лабораторией геропротекторных и радиопротекторных технологий</strong>.</p>
+                <hr>
+                <p>Данный информационный ресурс создан в рамках выполнения фундаментальных научных исследований.</p>
+                <p><strong>Государственное задание №:</strong> <span class="badge badge-info" style="font-size: 1rem;">Впиши_сюда_номер_твоего_задания</span></p>
+                <p class="mt-4">Наша деятельность направлена на поиск и систематизацию природных соединений, обладающих потенциалом для увеличения продолжительности здоровой жизни и защиты организма от радиационного воздействия.</p>
+                <div class="alert alert-secondary mt-5">
+                    Координация проекта: Группа биоинформатики и анализа больших данных.
+                </div>
             </div>
-          </div>
         </div>
-
-      </div>
-      
-      <footer class="text-center">
-        <p>© 2026 GeroLab | State Research Program | Data source: <strong>bsvv.csv</strong></p>
-      </footer>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery.csv.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-    <script src="js/csv_to_html_table.js"></script>
+    <footer class="text-center">
+        <p>© 2026 Laboratory of Geroprotective and Radioprotective Technologies<br>
+        Built with CSV-to-HTML-Table Open Source Engine</p>
+    </footer>
+</div>
 
-    <script>
-      function format_link(link) {
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery.csv.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script src="js/csv_to_html_table.js"></script>
+
+<script>
+    // Красивая ссылка на PubMed
+    function format_link(link) {
         if (link && link.startsWith('http'))
-          return "<a href='" + link + "' target='_blank' class='btn btn-sm btn-primary'>Open PubMed</a>";
+            return "<a href='" + link + "' target='_blank' class='btn btn-sm btn-pubmed'>Open PubMed</a>";
         else return link;
-      }
+    }
 
-      CsvToHtmlTable.init({
+    // Инициализация таблицы
+    CsvToHtmlTable.init({
         csv_path: 'data/bsvv.csv', 
         element: 'table-container', 
         allow_download: true,
         csv_options: {
-          separator: ';', 
-          delimiter: '"'
+            separator: ';', 
+            delimiter: '"'
         },
         datatables_options: {
-          "paging": false,
-          "language": {
-            "search": "Search in DB:"
-          }
+            "paging": false,
+            "language": {
+                "search": "Поиск по базе:",
+                "info": "Всего записей: _TOTAL_"
+            }
         },
         custom_formatting: [[6, format_link]]
-      });
-    </script>
-  </body>
+    });
+</script>
+
+</body>
 </html>
