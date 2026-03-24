@@ -1,85 +1,114 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>GeroLab — Интеллектуальная база</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeroProtector Lab - Интеллектуальный реестр</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <style>
-        body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
-        .header-bg { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 40px 0; margin-bottom: 20px; }
-        .nav-pills .nav-link.active { background-color: #007bff; }
-        .tab-content { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); min-height: 500px; }
-        /* Стили чата */
-        #chat-window { position: fixed; bottom: 80px; right: 20px; width: 350px; height: 450px; background: white; border: 1px solid #ddd; border-radius: 15px; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 1000; }
-        #chat-messages { flex: 1; padding: 15px; overflow-y: auto; font-size: 14px; }
-        .ai-btn { position: fixed; bottom: 15px; right: 20px; width: 60px; height: 60px; border-radius: 50%; border: none; background: #007bff; color: white; font-size: 24px; box-shadow: 0 4px 10px rgba(0,123,255,0.4); cursor: pointer; z-index: 1001; }
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .header { background: #fff; padding: 20px; border-bottom: 1px solid #dee2e6; text-align: center; margin-bottom: 30px; }
+        .table-container { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 100px; }
+        
+        /* Стили чат-бота */
+        #ai-widget {
+            position: fixed; bottom: 20px; right: 20px; width: 350px;
+            background: white; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            display: flex; flex-direction: column; z-index: 1000; overflow: hidden;
+        }
+        #chat-header { background: #007bff; color: white; padding: 12px; font-weight: bold; cursor: pointer; }
+        #chat-messages { height: 300px; overflow-y: auto; padding: 15px; font-size: 14px; border-bottom: 1px solid #eee; }
+        #chat-input-area { padding: 10px; display: flex; gap: 5px; }
+        .ai-msg { color: #0056b3; background: #eef6ff; padding: 8px; border-radius: 10px; margin-bottom: 10px; }
+        .user-msg { color: #333; background: #f1f1f1; padding: 8px; border-radius: 10px; margin-bottom: 10px; text-align: right; }
     </style>
 </head>
 <body>
 
-<div class="header-bg text-center">
-    <h1>🧬 GeroProtector Lab</h1>
-    <p>Интеллектуальный реестр геропротекторных экстрактов</p>
+<div class="header">
+    <img src="https://img.icons8.com/fluency/48/dna-helix.png" alt="logo">
+    <h1 class="h3 mt-2">GeroProtector Lab</h1>
+    <p class="text-muted">Интеллектуальный реестр генопротекторных экстрактов</p>
 </div>
 
-<div class="container-fluid px-5">
-    <ul class="nav nav-pills mb-4 justify-content-center" id="pills-tab" role="tablist">
-        <li class="nav-item"><a class="nav-link active" id="db-tab" data-toggle="pill" href="#db-pane">База данных</a></li>
-        <li class="nav-item"><a class="nav-link" id="about-tab" data-toggle="pill" href="#about-pane">О лаборатории</a></li>
-    </ul>
-
-    <div class="tab-content">
-        <div class="tab-pane fade show active" id="db-pane"><div id="table-container"></div></div>
-        <div class="tab-pane fade" id="about-pane">
-            <h3>Лаборатория геропротекторных технологий</h3>
-            <p>Работа ведется в рамках Госзадания № ФГЗ-2026-0042.</p>
+<div class="container">
+    <div class="table-container">
+        <h4 class="mb-3">База данных веществ</h4>
+        <div id="table-output" class="table-responsive">
+            <p class="text-center">Загрузка данных из CSV...</p>
         </div>
     </div>
 </div>
 
-<button class="ai-btn" onclick="toggleChat()">🤖</button>
-<div id="chat-window">
-    <div style="background:#007bff; color:white; padding:10px; border-radius:15px 15px 0 0;">GeroLab AI Assistant</div>
-    <div id="chat-messages"></div>
-    <div class="p-2 border-top">
-        <input type="text" id="user-input" class="form-control mb-1" placeholder="Ваш вопрос...">
-        <button onclick="askAI()" class="btn btn-primary btn-sm btn-block">Спросить ИИ</button>
+<div id="ai-widget">
+    <div id="chat-header">GeroLab AI Assistant</div>
+    <div id="chat-messages">
+        <div class="ai-msg">Привет! Спроси меня о дозировке или механизме любого вещества из таблицы.</div>
+    </div>
+    <div id="chat-input-area">
+        <input type="text" id="user-input" class="form-control" placeholder="Ваш вопрос..." onkeypress="if(event.keyCode==13) askAI()">
+        <button class="btn btn-primary" onclick="askAI()">Спросить</button>
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
-<script src="js/jquery.csv.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-<script src="js/csv_to_html_table.js"></script>
-
 <script>
-    // 1. Настройка таблицы
-    CsvToHtmlTable.init({
-        csv_path: 'data/bsvv.csv',
-        element: 'table-container',
-        allow_download: true,
-        csv_options: { separator: ';', delimiter: '"' },
-        datatables_options: { "paging": false },
-        custom_formatting: [[6, function(l){ return l ? `<a href="${l}" target="_blank" class="btn btn-sm btn-outline-primary">PubMed</a>` : '' }]]
+    // --- 1. ЗАГРУЗКА И ОТРИСОВКА CSV ---
+    const csvUrl = 'data/bsvv.csv'; // Путь к твоему файлу на GitHub
+
+    Papa.parse(csvUrl, {
+        download: true,
+        header: true,
+        complete: function(results) {
+            let html = '<table class="table table-hover" id="main-table"><thead><tr>';
+            // Заголовки
+            Object.keys(results.data[0]).forEach(key => {
+                html += `<th>${key}</th>`;
+            });
+            html += '</tr></thead><tbody>';
+            // Строки
+            results.data.forEach(row => {
+                if(row[Object.keys(row)[0]]) { // Проверка на пустую строку
+                    html += '<tr>';
+                    Object.values(row).forEach(val => {
+                        html += `<td>${val}</td>`;
+                    });
+                    html += '</tr>';
+                }
+            });
+            html += '</tbody></table>';
+            $('#table-output').html(html);
+        }
     });
 
-    // 2. Логика ИИ-чата
-    function toggleChat() { $('#chat-window').toggle(); }
-
+    // --- 2. ИНТЕЛЛЕКТУАЛЬНЫЙ ЧАТ (RAG НА СТОРОНЕ КЛИЕНТА) ---
     async function askAI() {
         const input = $('#user-input');
         const box = $('#chat-messages');
-        const text = input.val();
-        if(!text) return;
+        const query = input.val().trim();
+        if (!query) return;
 
-        box.append(`<div><b>Вы:</b> ${text}</div>`);
+        // Отображаем сообщение пользователя
+        box.append(`<div class="user-msg"><b>Вы:</b> ${query}</div>`);
         input.val('');
+        box.scrollTop(box[0].scrollHeight);
 
-        // СЮДА ВСТАВЬ СВОЮ ССЫЛКУ ИЗ NGROK
+        // Поиск контекста в отрисованной таблице
+        let foundContext = "";
+        $('#main-table tbody tr').each(function() {
+            const row = $(this);
+            const name = row.find('td:eq(1)').text(); // Колонка Название
+            const mechanism = row.find('td:eq(4)').text(); // Колонка Механизм
+            const dosage = row.find('td:eq(5)').text(); // Колонка Дозировка
+            
+            if (name && query.toLowerCase().includes(name.toLowerCase())) {
+                foundContext = `Вещество: ${name}, Механизм: ${mechanism}, Дозировка: ${dosage}`;
+                return false; // Нашли - выходим из цикла
+            }
+        });
+
+        // URL твоего запущенного ngrok (НЕ ЗАБЫВАЙ ОБНОВЛЯТЬ ЕГО ТУТ ПРИ ПЕРЕЗАПУСКЕ)
         const NGROK_URL = "https://malcolm-cenobitic-finally.ngrok-free.dev/v1/chat/completions";
 
         try {
@@ -88,18 +117,25 @@
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     messages: [
-                        { role: "system", content: "Ты научный ассистент лаборатории. Отвечай кратко на основе таблицы геропротекторов." },
-                        { role: "user", content: text }
-                    ]
+                        { 
+                            role: "system", 
+                            content: "Ты научный ассистент GeroLab. Твои знания: " + (foundContext || "информации нет в таблице") + ". Отвечай кратко по этим данным. Если данных нет, скажи что препарата нет в реестре." 
+                        },
+                        { role: "user", content: query }
+                    ],
+                    temperature: 0.2
                 })
             });
+
             const data = await res.json();
-            box.append(`<div class="text-primary"><b>ИИ:</b> ${data.choices[0].message.content}</div>`);
-        } catch(e) {
-            box.append(`<div class="text-danger">Ошибка: ИИ не в сети.</div>`);
+            const reply = data.choices[0].message.content;
+            box.append(`<div class="ai-msg"><b>ИИ:</b> ${reply}</div>`);
+        } catch (e) {
+            box.append(`<div class="text-danger small">Ошибка: Проверь ngrok и LM Studio (CORS должен быть включен).</div>`);
         }
         box.scrollTop(box[0].scrollHeight);
     }
 </script>
+
 </body>
 </html>
