@@ -1,22 +1,22 @@
 ID;Название;Латынь;Действующее вещество;Механизм;Дозировка;PubMed_Link
-1;Кверцетин;Quercetum;"Quercetum;Quercetin";Сенолитик / Антиоксидант;500-1000mg;https://pubmed.ncbi.nlm.nih.gov/30048570/
-2;Физетин;Fisetinum;Fisetin;Fisetinum;Сенолитик / Антиоксидант;100-500 mg;https://pubmed.ncbi.nlm.nih.gov/30279143/
-3;Ресвератрол;Resveratrolum;Resveratrol;Resveratrolum;Антиоксидант / SIRT1 активатор;150-500 mg;https://pubmed.ncbi.nlm.nih.gov/25882836/
-4;Куркумин;Curcuminum;Curcumin;Curcuminum;Антиоксидант / Противовоспалительное;500-2000 mg;https://pubmed.ncbi.nlm.nih.gov/17569207/
-5;EGCG;EGCG;EGCG;Epigallocatechin gallate;Антиоксидант;200-800 mg;https://pubmed.ncbi.nlm.nih.gov/17548739/
-6;Спермидин;Spermidinum;Spermidine;Spermidinum;Индуктор аутофагии;1-10 mg;https://pubmed.ncbi.nlm.nih.gov/25037810/
-7;Рапамицин;Rapamycinum;Rapamycin;Sirolimus;Ингибитор mTOR;1-6 mg (неделя);https://pubmed.ncbi.nlm.nih.gov/19587680/
-8;Метформин;Metforminum;Metformin;Metforminum;AMPK активатор;500-2000 mg;https://pubmed.ncbi.nlm.nih.gov/24657682/
-9;Мелатонин;Melatoninum;Melatonin;Melatoninum;Хронобиотик / Антиоксидант;1-10 mg;https://pubmed.ncbi.nlm.nih.gov/28651509/
-10;Коэнзим Q10;Ubiquinonum;CoQ10;Ubiquinone;Митохондриальный протектор;100-300 mg;https://pubmed.ncbi.nlm.nih.gov/19096117/
-11;Астаксантин;Astaxanthinum;Astaxanthin;Astaxanthinum;Антиоксидант;4-12 mg;https://pubmed.ncbi.nlm.nih.gov/24987721/
-12;Берберин;Berberinum;Berberine;Berberinum;Метаболический регулятор;500-1500 mg;https://pubmed.ncbi.nlm.nih.gov/21390539/
-13;Хлорогеновая кислота;Acidum chlorogenicum;Chlorogenic acid;;Антиоксидант;200-600 mg;https://pubmed.ncbi.nlm.nih.gov/20071648/
-14;Лютеолин;Luteolinum;Luteolin;Luteolinum;Противовоспалительное;50-200 mg;https://pubmed.ncbi.nlm.nih.gov/26248064/
-15;Апигенин;Apigeninum;Apigenin;Apigeninum;Антиоксидант;50-200 mg;https://pubmed.ncbi.nlm.nih.gov/23380551/
-16;NMN;NMN;Nicotinamide mononucleotide;;Повышение NAD+;250-500 mg;https://pubmed.ncbi.nlm.nih.gov/28068222/
-17;NR;NR;Nicotinamide riboside;;Повышение NAD+;250-500 mg;https://pubmed.ncbi.nlm.nih.gov/28758911/
-18;Птеростильбен;Pterostilbenum;Pterostilbene;Pterostilbenum;Антиоксидант;50-250 mg;https://pubmed.ncbi.nlm.nih.gov/21261636/
-19;Глицин;Glycinum;Glycine;Glycinum;Метаболический регулятор;1000-3000 mg;https://pubmed.ncbi.nlm.nih.gov/25963502/
-20;Таурин;Taurinum;Taurine;Taurinum;Антиоксидант / Осморегуляция;500-2000 mg;https://pubmed.ncbi.nlm.nih.gov/35905066/
-21;Альфа-липоевая кислота;Acidum alpha-lipoicum;Alpha-lipoic acid;;Антиоксидант;300-600 mg;https://pubmed.ncbi.nlm.nih.gov/19568336/
+1;Кверцетин;Quercetum;Quercetin;Сенолитик / Антиоксидант;500-1000mg;https://pubmed.ncbi.nlm.nih.gov/30048570/
+2;Физетин;Fisetinum;Fisetin;Сенолитик / Антиоксидант;100-500 mg;https://pubmed.ncbi.nlm.nih.gov/30279143/
+3;Ресвератрол;Resveratrolum;Resveratrol;Антиоксидант / SIRT1 активатор;150-500 mg;https://pubmed.ncbi.nlm.nih.gov/25882836/
+4;Куркумин;Curcuminum;Curcumin;Антиоксидант / Противовоспалительное;500-2000 mg;https://pubmed.ncbi.nlm.nih.gov/17569207/
+5;EGCG;EGCG;Epigallocatechin gallate;Антиоксидант;200-800 mg;https://pubmed.ncbi.nlm.nih.gov/17548739/
+6;Спермидин;Spermidinum;Spermidine;Индуктор аутофагии;1-10 mg;https://pubmed.ncbi.nlm.nih.gov/25037810/
+7;Рапамицин;Rapamycinum;Rapamycin;Ингибитор mTOR;1-6 mg (неделя);https://pubmed.ncbi.nlm.nih.gov/19587680/
+8;Метформин;Metforminum;Metformin;AMPK активатор;500-2000 mg;https://pubmed.ncbi.nlm.nih.gov/24657682/
+9;Мелатонин;Melatoninum;Melatonin;Хронобиотик / Антиоксидант;1-10 mg;https://pubmed.ncbi.nlm.nih.gov/28651509/
+10;Коэнзим Q10;Ubiquinonum;CoQ10;Митохондриальный протектор;100-300 mg;https://pubmed.ncbi.nlm.nih.gov/19096117/
+11;Астаксантин;Astaxanthinum;Astaxanthin;Антиоксидант;4-12 mg;https://pubmed.ncbi.nlm.nih.gov/24987721/
+12;Берберин;Berberinum;Berberine;Метаболический регулятор;500-1500 mg;https://pubmed.ncbi.nlm.nih.gov/21390539/
+13;Хлорогеновая кислота;Acidum chlorogenicum;Chlorogenic acid;Антиоксидант;200-600 mg;https://pubmed.ncbi.nlm.nih.gov/20071648/
+14;Лютеолин;Luteolinum;Luteolin;Противовоспалительное;50-200 mg;https://pubmed.ncbi.nlm.nih.gov/26248064/
+15;Апигенин;Apigeninum;Apigenin;Антиоксидант;50-200 mg;https://pubmed.ncbi.nlm.nih.gov/23380551/
+16;NMN;NMN;Nicotinamide mononucleotide;Повышение NAD+;250-500 mg;https://pubmed.ncbi.nlm.nih.gov/28068222/
+17;NR;NR;Nicotinamide riboside;Повышение NAD+;250-500 mg;https://pubmed.ncbi.nlm.nih.gov/28758911/
+18;Птеростильбен;Pterostilbenum;Pterostilbene;Антиоксидант;50-250 mg;https://pubmed.ncbi.nlm.nih.gov/21261636/
+19;Глицин;Glycinum;Glycine;Метаболический регулятор;1000-3000 mg;https://pubmed.ncbi.nlm.nih.gov/25963502/
+20;Таурин;Taurinum;Taurine;Антиоксидант / Осморегуляция;500-2000 mg;https://pubmed.ncbi.nlm.nih.gov/35905066/
+21;Альфа-липоевая кислота;Acidum alpha-lipoicum;Alpha-lipoic acid;Антиоксидант;300-600 mg;https://pubmed.ncbi.nlm.nih.gov/19568336/
